@@ -10,8 +10,8 @@ const initState = {
   books: [
     {
       id: Math.random(),
-      title: 'lord of the rings',
-      category: 'adventure',
+      title: 'The Iron tiger',
+      category: 'action',
     },
 
     {
@@ -22,8 +22,8 @@ const initState = {
 
     {
       id: Math.random(),
-      title: 'The Hobbit',
-      category: 'adventure',
+      title: 'The Martian',
+      category: 'Sci-Fi',
     },
 
   ],
