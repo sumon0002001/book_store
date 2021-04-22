@@ -5,7 +5,7 @@ import Book from '../components/Book';
 
 const BooksList = ({ books }) => {
   const bookList = books.map((book) => (
-    <Book book={book} key={book.id} />
+    <Book book={book} key={Math.random()} />
   ));
   return (
     <table>
