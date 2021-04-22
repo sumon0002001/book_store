@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Book = props => {
+const Book = (props) => {
   const { book } = props;
   return (
     <tr>
@@ -19,6 +19,5 @@ Book.propTypes = {
     category: PropTypes.string,
   }).isRequired,
 };
-
 
 export default Book;
