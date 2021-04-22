@@ -1,7 +1,7 @@
 function App() {
   return (
     <div>
-      <header >
+      <header>
         <p>
           Welcome to the Book store.
         </p>
