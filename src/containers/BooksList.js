@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Book from '../components/Book';
+// import { removeBook } from '../actions/index';
 
 const BooksList = ({ books }) => {
   const bookList = books.map((book) => (
