@@ -1,40 +1,28 @@
-import React, { Component } from 'react';
+/* eslint-disable arrow-body-style */
+import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Book from '../components/Book';
 import { removeBook } from '../actions/index';
 
-class BooksList extends Component {
-  handleRemoveBook = book => {
-    const { removeBook } = this.props;
-    removeBook(book);
-  };
-
-  render() {
-    const { books } = this.props;
-    const bookList = books.map(book => (
-      <Book
-        book={book}
-        handleRemoveBook={this.handleRemoveBook}
-        key={Math.random()}
-      />
-    ));
-    return (
-      <table>
-        <thead>
-          <tr>
-            <th>Book ID</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>{bookList}</tbody>
-      </table>
-    );
-
-  }
-
+const BooksList = ({ books, removeBook }) => {
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Book ID</th>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Remove</th>
+        </tr>
+      </thead>
+      <tbody>
+        {books.map((book) => (
+          <Book key={book.id} book={book} removeBook={removeBook} />
+        ))}
+      </tbody>
+    </table>
+  );
 };
 
 BooksList.propTypes = {
@@ -44,13 +32,6 @@ BooksList.propTypes = {
 
 const mapStateToProps = (state) => ({
   books: state.books,
-
 });
 
-const mapDispatchToProps = dispatch => ({
-  removeBook: book => {
-    dispatch(removeBook(book));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(BooksList);
+export default connect(mapStateToProps, { removeBook })(BooksList);
