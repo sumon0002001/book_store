@@ -1,15 +1,38 @@
 import React from 'react';
+import { createStore } from 'redux';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import { Provider } from 'react-redux';
+import App from './components/App';
+import rootReducer from './reducers/index';
 
+const initState = {
+  books: [
+    {
+      id: Math.random(),
+      title: 'The Iron tiger',
+      category: 'action',
+    },
+
+    {
+      id: Math.random(),
+      title: 'Harry potter',
+      category: 'adventure',
+    },
+
+    {
+      id: Math.random(),
+      title: 'The Martian',
+      category: 'Sci-Fi',
+    },
+
+  ],
+};
+
+const store = createStore(rootReducer, initState);
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}><App /></Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
