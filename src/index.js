@@ -9,24 +9,25 @@ import rootReducer from './reducers/index';
 const initState = {
   books: [
     {
-      id: Math.random(),
-      title: 'The Iron tiger',
-      category: 'action',
+      id: Math.floor(Math.random() * 10),
+      title: 'lord of the rings',
+      category: 'Action',
     },
 
     {
-      id: Math.random(),
+      id: Math.floor(Math.random() * 10),
       title: 'Harry potter',
-      category: 'adventure',
+      category: 'Horror',
     },
 
     {
-      id: Math.random(),
-      title: 'The Martian',
+      id: Math.floor(Math.random() * 10),
+      title: 'The Hobbit',
       category: 'Sci-Fi',
     },
 
   ],
+  filter: '',
 };
 
 const store = createStore(rootReducer, initState);
