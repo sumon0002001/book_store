@@ -4,7 +4,7 @@ import BooksList from '../containers/BooksList';
 
 function App() {
   return (
-    <div>
+    <div className="container">
       <BooksList />
       <BookForm />
     </div>
