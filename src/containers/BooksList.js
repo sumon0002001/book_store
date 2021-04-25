@@ -34,7 +34,7 @@ class BooksList extends Component {
       <div className="main-div">
         <div className="header">
           <div className="header-items">
-            <p className="title">Bookstore CMS</p>
+            <p className="cms">Bookstore CMS</p>
             <div className="books"><p>BOOKS</p></div>
             <div className="select">
               <div className="category">CATEGORIES</div>
