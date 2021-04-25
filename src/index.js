@@ -10,20 +10,20 @@ const initState = {
   books: [
     {
       id: Math.floor(Math.random() * 10),
-      title: 'lord of the rings',
+      title: 'The Hunger Games',
       category: 'Action',
     },
 
     {
       id: Math.floor(Math.random() * 10),
-      title: 'Harry potter',
-      category: 'Horror',
+      title: 'Dune',
+      category: 'Science Fiction',
     },
 
     {
       id: Math.floor(Math.random() * 10),
-      title: 'The Hobbit',
-      category: 'Sci-Fi',
+      title: 'Capital in the Twenty-First Century',
+      category: 'Economy',
     },
 
   ],
