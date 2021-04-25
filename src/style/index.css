@@ -33,7 +33,7 @@ code {
 .header-items {
   display: flex;
   width: 60%;
-  justify-content: space-between;
+  justify-content: space-evenly;
   float: left;
 }
 
@@ -57,7 +57,7 @@ code {
 
 .title {
   color: #419bf9;
-  font-weight: 700;
+  font-weight: 900;
   font-size: 20px;
 }
 
