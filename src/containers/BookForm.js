@@ -1,102 +1,80 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { createBook } from '../actions/index';
 
-const BooksForm = (props) => {
-  const [state, setState] = useState({
-    id: '',
-    title: '',
-    category: '',
-  });
-  const bookCategories = [
-    '',
-    'Action',
-    'Biography',
-    'History',
-    'Horror',
-    'Kids',
-    'Learning',
-    'Sci-Fi',
-  ];
+class BookForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      id: null,
+      title: '',
+      category: '',
+    };
 
-  const handleSubmit = (event) => {
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit = (event) => {
+    const { createBook } = this.props;
     event.preventDefault();
-    setState({
-      ...state, id: Date.now(),
+    createBook(this.state);
+    this.setState({ title: '', category: '' });
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      id: Math.floor(Math.random() * 50),
+      [e.target.name]: e.target.value,
     });
+  }
 
-    props.createBook(state);
-  };
+  render() {
+    const categories = [
+      'select',
+      'Action',
+      'Biography',
+      'History',
+      'Horror',
+      'Kids',
+      'Learning',
+      'Sci-Fi',
+    ];
 
-  const handleChange = (event) => {
-    const { value } = event.target;
-    switch (event.target.name) {
-      case 'title':
-        setState({
-          ...state, title: value,
-        });
-        break;
-      case 'category':
-        setState({
-          ...state, category: value,
-        });
-        break;
-      default:
-        break;
-    }
-  };
+    const catList = categories.map((cat) => (
+      <option key={Math.random()} value={cat}>
+        {cat}
+      </option>
+    ));
 
-  return (
-    <div>
-      <h2>{`title: ${state.title}`}</h2>
-      <h2>{`category: ${state.category}`}</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">
-          Title:
-          <input
-            type="text"
-            name="title"
-            onChange={handleChange}
-          />
-        </label>
+    const { title, category } = this.state;
 
-        <label htmlFor="category">
-          Category:
-          <select
-            onChange={handleChange}
-            name="category"
-          >
-            {bookCategories.map((category) => (
-              <option
-                key={category}
-                value={category}
-              >
-                {category}
-              </option>
-            ))}
+    return (
+      <div className="book-form-div">
+        <hr className="hr" />
+        <h3 className="new-book-title">ADD NEW BOOK</h3>
+        <form onSubmit={this.handleSubmit} className="book-form">
+          <label htmlFor="title">
+            <input placeholder="Book Title" className="form-title" name="title" type="text" onChange={this.handleChange} value={title} />
+          </label>
+
+          <select name="category" onChange={this.handleChange} value={category} className="select-cat">
+            {catList}
           </select>
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    </div>
-  );
-};
+          <button type="submit" className="add-book-btn">Add book</button>
+        </form>
+      </div>
+    );
+  }
+}
 
-BooksForm.propTypes = {
-  createBook: PropTypes.func,
+BookForm.propTypes = {
+  createBook: PropTypes.func.isRequired,
 };
-
-BooksForm.defaultProps = {
-  createBook: createBook(),
-};
-
-const mapStateToProps = (state) => ({
-  books: state.books,
-});
 
 const mapDispatchToProps = (dispatch) => ({
-  createBook: (book) => dispatch(createBook(book)),
+  createBook: (book) => { dispatch(createBook(book)); },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(BooksForm);
+export default connect(null, mapDispatchToProps)(BookForm);

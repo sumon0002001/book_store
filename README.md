@@ -2,7 +2,7 @@
 
 This is the first Milestone of the project Bookstore from the React and Redux module from Microvers. This Milestone goal is to give the style to the SPA following a given example.
 
-![screenshots](./screen.png)
+![screenshots](./screen_1.png)
 
 ## :hammer: Built with:
 
